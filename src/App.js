@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useEffect } from 'react';
+import { createGraph } from './createGraph';
+import Register from './components/pages/register/Register';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount((count) => count + 1);
-  };
-
-  const decrement = () => {
-    setCount((count) => count - 1);
-  };
+  // useEffect(() => {
+  //   createGraph();
+  // }, []);
 
   return (
     <div>
       <div className="container">
-        <h1>Counter</h1>
-        <p className="count">{count}</p>
-        <div className="btns">
-          <button className="btn" onClick={decrement}>
-            -
-          </button>
-          <button className="btn" onClick={increment}>
-            +
-          </button>
-        </div>
+        <Register />
       </div>
     </div>
   );
