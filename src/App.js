@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createGraph } from './createGraph';
-import Register from './components/pages/register/Register';
+import Router from './components/ui/Router';
 
 function App() {
   // useEffect(() => {
@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <div className="container">
-        <Register />
+        <Router />
       </div>
     </div>
   );

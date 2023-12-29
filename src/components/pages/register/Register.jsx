@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const {
@@ -11,7 +12,6 @@ const Register = () => {
   const password = watch('password');
   const onSubmit = (data) => {
     localStorage.setItem('user', JSON.stringify(data));
-    console.log(data);
   };
 
   return (
@@ -28,6 +28,7 @@ const Register = () => {
           })}
         />
         {errors.email && <p>{errors.email.message}</p>}
+
         <label htmlFor="username">Username</label>
         <input
           {...register('username', {
@@ -39,6 +40,7 @@ const Register = () => {
           })}
         />
         {errors.username && <p>{errors.username.message}</p>}
+
         <label htmlFor="password">Password</label>
         <input
           {...register('password', {
@@ -51,17 +53,21 @@ const Register = () => {
             },
           })}
         />
-        <label htmlFor="repeatpassword">Repeat password</label>
         {errors.password && <p>{errors.password.message}</p>}
+
+        <label htmlFor="repeatpassword">Repeat password</label>
         <input
           {...register('repeatpassword', {
             validate: (value) => value === password || 'The passwords do not match',
           })}
         />
         {errors.repeatpassword && <p>{errors.repeatpassword.message}</p>}
-        <input type="submit" value="Sign up" />
+        <button type="submit">Sign up</button>
       </form>
-      <a href="/login">Already have an account? Sign in</a>
+
+      <p>
+        Already have an account? <Link to="/signin"> Sign in</Link>
+      </p>
     </div>
   );
 };
