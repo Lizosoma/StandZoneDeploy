@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import styles from '../../ui/form/form.module.css';
 
 const Register = () => {
   const {
@@ -15,8 +16,9 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="container">
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <h2>Sign Up</h2>
         <label htmlFor="email">Email</label>
         <input
           {...register('email', {
@@ -27,7 +29,7 @@ const Register = () => {
             },
           })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
 
         <label htmlFor="username">Username</label>
         <input
@@ -39,7 +41,7 @@ const Register = () => {
             },
           })}
         />
-        {errors.username && <p>{errors.username.message}</p>}
+        {errors.username && <p className={styles.error}>{errors.username.message}</p>}
 
         <label htmlFor="password">Password</label>
         <input
@@ -53,7 +55,7 @@ const Register = () => {
             },
           })}
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && <p className={styles.error}>{errors.password.message}</p>}
 
         <label htmlFor="repeatpassword">Repeat password</label>
         <input
@@ -61,13 +63,17 @@ const Register = () => {
             validate: (value) => value === password || 'The passwords do not match',
           })}
         />
-        {errors.repeatpassword && <p>{errors.repeatpassword.message}</p>}
-        <button type="submit">Sign up</button>
-      </form>
+        {errors.repeatpassword && <p className={styles.error}>{errors.repeatpassword.message}</p>}
 
-      <p>
-        Already have an account? <Link to="/signin"> Sign in</Link>
-      </p>
+        <button type="submit">Sign up</button>
+
+        <p>
+          Already have an account?{' '}
+          <b>
+            <Link to="/signin">Sign in</Link>
+          </b>
+        </p>
+      </form>
     </div>
   );
 };

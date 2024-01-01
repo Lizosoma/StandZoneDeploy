@@ -2,6 +2,21 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  /* border: none; */
+  border: none;
   color: inherit;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #7b7b7b;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }

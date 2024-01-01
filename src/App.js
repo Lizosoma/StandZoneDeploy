@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { createGraph } from './createGraph';
+import React from 'react';
 import Router from './components/ui/Router';
+import Header from './components/Header';
 
 function App() {
   // useEffect(() => {
@@ -8,10 +8,9 @@ function App() {
   // }, []);
 
   return (
-    <div>
-      <div className="container">
-        <Router />
-      </div>
+    <div className="container">
+      <Header />
+      <Router />
     </div>
   );
 }

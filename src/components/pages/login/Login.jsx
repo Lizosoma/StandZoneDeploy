@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import styles from '../../ui/form/form.module.css';
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -28,27 +29,41 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">Email</label>
-      <input
-        {...register('email', {
-          required: 'Email is required',
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
-            message: 'Email is not valid',
-          },
-        })}
-      />
-      {errors.email && <p>{errors.email.message}</p>}
+    <div className="container">
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <h2>Sign In</h2>
+        <label htmlFor="email">Email</label>
+        <input
+          {...register('email', {
+            required: 'Email is required',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
+              message: 'Email is not valid',
+            },
+          })}
+        />
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
 
-      <label htmlFor="password">Password</label>
-      <input {...register('password', { required: 'Password is required' })} />
-      {errors.password && <p>{errors.password.message}</p>}
+        <label htmlFor="password">Password</label>
+        <input
+          {...register('password', {
+            required: 'Password is required',
+          })}
+        />
+        {errors.password && <p className={styles.error}>{errors.password.message}</p>}
 
-      {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
-      <button type="submit">Sign in</button>
-    </form>
+        <button type="submit">Sign in</button>
+
+        <p>
+          No account yet?{' '}
+          <b>
+            <Link to="/signup">Sign up</Link>
+          </b>
+        </p>
+      </form>
+    </div>
   );
 };
 

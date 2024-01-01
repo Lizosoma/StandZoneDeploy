@@ -1,0 +1,23 @@
+.button {
+  background-color: #ffffff;
+  max-width: 240px;
+  width: 25%;
+  padding: 1vw;
+  border: 1px solid #000;
+  transition: all 0.5s ease;
+}
+
+.button p {
+  font-size: 1.3vw;
+  line-height: 1.3vw;
+}
+
+.button:hover {
+  background-color: #cd1963;
+  color: #ffffff;
+}
+
+.button:focus {
+  background-color: #cd1963;
+  color: #ffffff;
+}
