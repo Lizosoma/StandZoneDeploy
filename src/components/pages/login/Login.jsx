@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import styles from '../../ui/form/form.module.css';
 
-const Login = () => {
+const Login = ({ onSignIn }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
@@ -23,6 +23,7 @@ const Login = () => {
       setErrorMessage('Incorrect password');
     } else if (user && data.email === user.email && data.password === user.password) {
       localStorage.setItem('isLoggedIn', 'true');
+      onSignIn(user); // Call the onSignIn function with the user data
       setErrorMessage('');
       navigate('/');
     }

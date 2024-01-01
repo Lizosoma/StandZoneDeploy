@@ -1,9 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../ui/form/form.module.css';
 
 const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,6 +14,7 @@ const Register = () => {
   const password = watch('password');
   const onSubmit = (data) => {
     localStorage.setItem('user', JSON.stringify(data));
+    navigate('/signin');
   };
 
   return (

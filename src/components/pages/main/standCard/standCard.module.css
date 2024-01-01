@@ -1,0 +1,40 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 17.5vw;
+  height: 24vw;
+  padding: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.like {
+  width: 20%;
+  cursor: pointer;
+  position: absolute;
+}
+
+.image {
+  width: 100%;
+  height: 75%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
