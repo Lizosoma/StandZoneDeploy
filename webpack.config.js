@@ -8,6 +8,7 @@ module.exports = {
     main: path.resolve(__dirname, './src/index.js'),
   },
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
   },

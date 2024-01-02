@@ -9,26 +9,18 @@
 }
 
 .right {
-  width: 100%;
+  width: fit-content;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
-.search {
-  background-color: #d4d4d4;
-  margin-right: 10px;
-}
-
-.button {
-  max-width: 240px;
-  min-width: 20%;
-}
-
-.user {
+.userBtns {
   display: flex;
   align-items: center;
 }
 
-.username {
-  margin-right: 10px;
+.username,
+.search,
+.favorites {
+  margin-right: 30px;
 }

@@ -1,0 +1,22 @@
+.paginationList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pageItem {
+  margin-right: 16px;
+}
+
+.prevArr {
+  margin-right: 10px;
+  transform: rotate(-90deg);
+}
+
+.nextArr {
+  transform: rotate(90deg);
+}
+
+.active {
+  font-weight: 700;
+}
