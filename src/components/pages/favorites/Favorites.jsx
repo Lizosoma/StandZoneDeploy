@@ -1,49 +1,40 @@
-// import React, { useState, useEffect } from 'react';
-// import { stands } from '../../../database/db';
-// import PinkButton from '../../ui/pinkButton/PinkButton';
-// import styles from '../main/standCard/standCard.module.css';
-// import like from '../main/standCard/like.svg';
-// import liked from '../main/standCard/liked.svg';
+import React, { useState, useEffect } from 'react';
+import styles from '../main/standCard/standCard.module.css';
+import { StandsService } from '../../../services/card.service';
+import StandCard from '../main/standCard/StandCard';
 
-// const Favorites = () => {
-//   const [favoriteStands, setFavoriteStands] = useState([]);
+const Favorites = () => {
+  const [favoriteStands, setFavoriteStands] = useState([]);
 
-//   useEffect(() => {
-//     const favorites = localStorage.getItem('favorites');
-//     const parsedFavorites = favorites ? JSON.parse(favorites) : [];
-//     const filteredStands = stands.filter((stand) => parsedFavorites.includes(stand.id));
-//     setFavoriteStands(filteredStands);
-//   }, []);
+  useEffect(() => {
+    const favoriteIds = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-//   const deleteFromFavorites = (id) => {
-//     const newFavorites = favoriteStands.filter((stand) => stand.id !== id);
-//     setFavoriteStands(newFavorites);
-//     const newFavoritesIds = newFavorites.map((stand) => stand.id);
-//     localStorage.setItem('favorites', JSON.stringify(newFavoritesIds));
-//   };
+    const fetchFavoriteStands = async () => {
+      const standsData = await Promise.all(favoriteIds.map((id) => StandsService.getById(id)));
+      setFavoriteStands(standsData);
+    };
 
-//   return (
-//     <div className={styles.cards}>
-//       {favoriteStands.map((stand) => (
-//         <div key={stand.id} className={styles.card}>
-//           <img
-//             className={styles.like}
-//             src={favoriteStands.some((favStand) => favStand.id === stand.id) ? liked : like}
-//             alt="like"
-//             onClick={() => deleteFromFavorites(stand.id)}
-//           />
-//           <div
-//             className={styles.image}
-//             style={{ backgroundImage: `url(${stand.stand_images[0]}` }}
-//           />
-//           <div className={styles.info}>
-//             <h2>{stand.name}</h2>
-//             <PinkButton text={'Read more'} />
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
+    fetchFavoriteStands();
+  }, []);
 
-// export default Favorites;
+  const deleteFromFavorites = (id) => {
+    const updatedFavorites = favoriteStands.filter((stand) => stand.id !== id);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites.map((stand) => stand.id)));
+    setFavoriteStands(updatedFavorites);
+  };
+
+  return (
+    <div className={styles.cards}>
+      {favoriteStands.map((stand) => (
+        <StandCard
+          key={stand.id}
+          stand={stand}
+          toggleFavorite={deleteFromFavorites}
+          isFavorite={true}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default Favorites;
