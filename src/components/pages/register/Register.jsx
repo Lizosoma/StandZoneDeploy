@@ -12,8 +12,11 @@ const Register = () => {
     formState: { errors },
   } = useForm({ mode: 'onChange' });
   const password = watch('password');
+
   const onSubmit = (data) => {
-    localStorage.setItem('user', JSON.stringify(data));
+    const registeredUsers = JSON.parse(localStorage.getItem('users')) || [];
+    registeredUsers.push(data);
+    localStorage.setItem('users', JSON.stringify(registeredUsers));
     navigate('/signin');
   };
 

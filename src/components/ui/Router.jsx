@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Header from '../Header'; // Import the Header component
+import Header from '../Header';
 import Register from '../pages/register/Register';
 import Login from '../pages/login/Login';
 import Main from '../pages/main/Main';

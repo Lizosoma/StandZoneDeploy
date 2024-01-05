@@ -14,18 +14,23 @@ const Login = ({ onSignIn }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const userString = localStorage.getItem('user');
-    const user = userString ? JSON.parse(userString) : null;
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    if (!user || data.email !== user.email) {
-      setErrorMessage('User with this email does not exist');
-    } else if (!user || data.password !== user.password) {
-      setErrorMessage('Incorrect password');
-    } else if (user && data.email === user.email && data.password === user.password) {
-      localStorage.setItem('isLoggedIn', 'true');
-      onSignIn(user); // Call the onSignIn function with the user data
-      setErrorMessage('');
-      navigate('/');
+    for (const user of users) {
+      console.log(user.email);
+      console.log(data.email);
+      if (!user || data.email !== user.email) {
+        setErrorMessage('User with this email does not exist');
+      } else if (!user || data.password !== user.password) {
+        setErrorMessage('Incorrect password');
+      } else if (user && data.email === user.email && data.password === user.password) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('authorizedUser', JSON.stringify(user));
+        onSignIn(user);
+        setErrorMessage('');
+        navigate('/');
+        return;
+      }
     }
   };
 
