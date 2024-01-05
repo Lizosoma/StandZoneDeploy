@@ -7,7 +7,7 @@ import Pagination from './pagination/Pagination';
 const Main = () => {
   const [stands, setStands] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(12);
+  const [itemsPerPage] = useState(24);
   const [totalItems, setTotalItems] = useState(0);
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites') || '[]'));
 
@@ -43,7 +43,7 @@ const Main = () => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <div className="container">
+    <>
       <div className={styles.cards}>
         {stands.map((stand) => (
           <StandCard
@@ -59,7 +59,7 @@ const Main = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
-    </div>
+    </>
   );
 };
 

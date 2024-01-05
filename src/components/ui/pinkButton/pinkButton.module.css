@@ -3,15 +3,25 @@
   padding: 1vw 4vw;
   outline: 1px solid #000;
   transition: background-color 0.5s ease;
-}
-
-.button p {
-  font-size: 1vw;
-  line-height: 1.3vw;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
 .button:hover {
   background-color: #cd1963;
   color: #ffffff;
   outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .button {
+    font-size: xx-small;
+  }
 }

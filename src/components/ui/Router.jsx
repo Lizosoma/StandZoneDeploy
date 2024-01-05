@@ -28,6 +28,7 @@ const Router = () => {
   const handleSignOut = () => {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
+    localStorage.removeItem('user');
   };
 
   return (

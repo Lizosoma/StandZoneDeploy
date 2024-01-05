@@ -5,12 +5,39 @@
   border: none;
   color: inherit;
   box-sizing: border-box;
-  font-size: 1.3vw;
   list-style: none;
+  font-family: 'Geometria', sans-serif;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src:
+    local('Geometria-Regular'),
+    url('../../Fonts/Geometria-Regular.woff2') format('woff2'),
+    url('../../Fonts/Geometria-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geometria';
+  src:
+    local('Geometria-ExtraBold'),
+    url('../../Fonts/Geometria-ExtraBold.woff2') format('woff2'),
+    url('../../Fonts/Geometria-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+input:focus {
+  outline: none;
 }
 
 body {
-  background-color: #7b7b7b;
+  background-color: #ffffff;
+  font-size: 1rem;
 }
 
 button {
@@ -21,4 +48,25 @@ button {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: small;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: xx-small;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
 }

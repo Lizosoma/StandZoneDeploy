@@ -13,21 +13,21 @@ const Header = ({ isLoggedIn, user, onSignOut }) => {
         <img src={logo} alt="logo" />
       </Link>
       <div className={styles.right}>
-        <button className={styles.search}>
+        <Link to={'/search'} className={styles.search}>
           <img src={search} alt="search" />
-        </button>
+        </Link>
         {isLoggedIn ? (
-          <div className={styles.userBtns}>
+          <>
             <Link to={'/favorites'}>
               <img className={styles.favorites} src={favorites} alt="favorites" />
             </Link>
             <p className={styles.username}>{user?.username}</p>
-            <Link to={'/'} className={styles.button}>
+            <Link to={'/'}>
               <PinkButton text={'Sign out'} onClick={onSignOut} />
             </Link>
-          </div>
+          </>
         ) : (
-          <Link to={'/signin'} className={styles.button}>
+          <Link to={'/signin'}>
             <PinkButton text={'Sign in'} />
           </Link>
         )}

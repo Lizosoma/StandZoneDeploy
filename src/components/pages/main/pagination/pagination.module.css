@@ -20,3 +20,16 @@
 .active {
   font-weight: 700;
 }
+
+@media screen and (max-width: 768px) {
+  .paginationList {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .paginationList {
+    justify-content: center;
+    font-size: xx-small;
+  }
+}
