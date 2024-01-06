@@ -1,3 +1,8 @@
+.back {
+  display: block;
+  margin-bottom: 10px;
+}
+
 .standContainer {
   display: flex;
   flex-direction: row;
@@ -81,4 +86,56 @@
   width: 10px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .images {
+    width: 45%;
+  }
+
+  .standImage {
+    height: 400px;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .images {
+    width: 40%;
+  }
+
+  .standImage {
+    height: 300px;
+    max-width: 300px;
+  }
+
+  .imageAndDots {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .standContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .images {
+    width: 100%;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .standInfo {
+    margin-bottom: 16px;
+  }
+
+  .standImage,
+  .userImage {
+    margin-bottom: 10px;
+  }
+
+  .standInfo h2 {
+    text-align: center;
+  }
 }

@@ -73,7 +73,10 @@ const StandItem = () => {
 
   return (
     <>
-      <Link to={'/'}> ← Back</Link>
+      <Link className={styles.back} to={'/'}>
+        {' '}
+        ← Back
+      </Link>
       <div className={styles.standContainer}>
         <div className={styles.images}>
           <div className={styles.imageAndDots}>
@@ -119,15 +122,15 @@ const StandItem = () => {
           <canvas stats={stand.stats} id="stats" width="300" height="300"></canvas>
           <p>
             <b>Types: </b>
-            {stand.type}
+            {stand.type.join(', ')}
           </p>
           <p>
             <b>Abilities: </b>
-            {stand.abilities}
+            {stand.abilities.join(', ')}
           </p>
           <p>
             <b>Chapter: </b>
-            {stand.chapter}
+            {stand.chapter.join(', ')}
           </p>
           <p className={styles.battlecry}>
             <b>Battlecry: </b>

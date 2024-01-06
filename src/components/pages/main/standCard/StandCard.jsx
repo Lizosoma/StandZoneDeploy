@@ -8,16 +8,16 @@ const StandCard = ({ stand, toggleFavorite, isFavorite }) => {
   const log = localStorage.getItem('isLoggedIn') === 'true';
   return (
     <div className={styles.cards}>
-      <Link to={`/stands/${stand.id}`}>
-        <div className={styles.card}>
-          {log && (
-            <img
-              className={styles.like}
-              src={isFavorite ? liked : like}
-              alt="like"
-              onClick={() => toggleFavorite(stand.id)}
-            />
-          )}
+      <div className={styles.card}>
+        {log && (
+          <img
+            className={styles.like}
+            src={isFavorite ? liked : like}
+            alt="like"
+            onClick={() => toggleFavorite(stand.id)}
+          />
+        )}
+        <Link to={`/stands/${stand.id}`}>
           <div
             className={styles.image}
             style={{
@@ -27,11 +27,11 @@ const StandCard = ({ stand, toggleFavorite, isFavorite }) => {
                   : 'none',
             }}
           />
-        </div>
+        </Link>
         <div className={styles.name}>
           <span>{stand.name}</span>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
