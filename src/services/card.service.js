@@ -14,7 +14,7 @@ export const StandsService = {
 
   getByPage: async (page, limit) => {
     try {
-      const response = await axios.get(`${BASE_URL}/stands`, {
+      const response = await axios.get(`${BASE_URL}/stands?_page=${page}&_limit=${limit}`, {
         params: {
           _page: page,
           _limit: limit,

@@ -6,6 +6,7 @@ import Login from '../pages/login/Login';
 import Main from '../pages/main/Main';
 import Favorites from '../pages/favorites/Favorites';
 import StandItem from '../pages/main/standItem/StandItem';
+import Search from '../pages/search/Search';
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,6 +41,7 @@ const Router = () => {
         <Route path="/signin" element={<Login onSignIn={handleSignIn} />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/stands/:id" element={<StandItem />} />
+        <Route path="/search" element={<Search />} />
         <Route path="*" element={<div>Not found</div>} />
       </Routes>
     </BrowserRouter>
