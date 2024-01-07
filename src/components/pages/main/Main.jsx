@@ -12,7 +12,6 @@ const Main = () => {
   const [error, setError] = useState(null);
 
   const favorites = JSON.parse(localStorage.getItem('store')) || [];
-  console.log(favorites);
 
   useEffect(() => {
     const fetchData = async (page) => {

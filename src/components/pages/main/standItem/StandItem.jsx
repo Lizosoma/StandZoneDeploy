@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { StandsService } from '../../../../services/card.service';
 import styles from './standItem.module.css';
+import Back from './Back';
 import StandInfo from './standItemParts/StandInfo';
 import StandPictures from './standItemParts/StandPictures';
 import UserPictures from './standItemParts/UserPictures';
@@ -35,10 +36,7 @@ const StandItem = () => {
 
   return (
     <>
-      <Link className={styles.back} to={'/'}>
-        {' '}
-        ← Back
-      </Link>
+      <Back />
       <div className={styles.standContainer}>
         <div className={styles.images}>
           <StandPictures stand={stand} />
