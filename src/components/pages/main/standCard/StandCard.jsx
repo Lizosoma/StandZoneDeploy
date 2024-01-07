@@ -4,19 +4,12 @@ import liked from './liked.svg';
 import styles from './standCard.module.css';
 import { Link } from 'react-router-dom';
 
-const StandCard = ({ stand, toggleFavorite, isFavorite }) => {
+const StandCard = ({ stand, isFavorite }) => {
   const log = localStorage.getItem('isLoggedIn') === 'true';
   return (
     <div className={styles.cards}>
       <div className={styles.card}>
-        {log && (
-          <img
-            className={styles.like}
-            src={isFavorite ? liked : like}
-            alt="like"
-            onClick={() => toggleFavorite(stand.id)}
-          />
-        )}
+        {log && <img className={styles.like} src={isFavorite ? liked : like} alt="like" />}
         <Link to={`/stands/${stand.id}`}>
           <div
             className={styles.image}

@@ -9,23 +9,10 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(24);
   const [totalItems, setTotalItems] = useState(0);
-  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites') || '[]'));
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
-
-  const toggleFavorite = (id) => {
-    setFavorites((currentFavorites) => {
-      const isFavorite = currentFavorites.includes(id);
-      if (isFavorite) {
-        return currentFavorites.filter((favoriteId) => favoriteId !== id);
-      } else {
-        return [...currentFavorites, id];
-      }
-    });
-  };
+  const favorites = JSON.parse(localStorage.getItem('store')) || [];
+  console.log(favorites);
 
   useEffect(() => {
     const fetchData = async (page) => {
@@ -50,14 +37,13 @@ const Main = () => {
 
   return (
     <>
-      {error && <div>{error}</div>}
+      {error && <div className="noMessage">{error}</div>}
       <div className={styles.cards}>
         {stands.map((stand) => (
           <StandCard
             key={stand.id}
             stand={stand}
-            toggleFavorite={toggleFavorite}
-            isFavorite={favorites.includes(stand.id)}
+            isFavorite={Object.keys(favorites).includes(stand.id.toString())}
           />
         ))}
       </div>

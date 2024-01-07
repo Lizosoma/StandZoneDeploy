@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { StandsService } from '../../../../services/card.service';
 import styles from './standItem.module.css';
@@ -10,10 +11,16 @@ const StandItem = () => {
   const { id } = useParams();
   const [stand, setStand] = useState({});
 
+  const [standFavorite, setStandFavorite] = useState(false);
+  const storeData = useSelector((state) => state.favoriteReducer);
+
   useEffect(() => {
     if (!id) {
       return;
     }
+
+    storeData[id] ? setStandFavorite(true) : setStandFavorite(false);
+
     const fetchData = async () => {
       const data = await StandsService.getById(id);
       setStand(data);
@@ -37,7 +44,11 @@ const StandItem = () => {
           <StandPictures stand={stand} />
           <UserPictures stand={stand} />
         </div>
-        <StandInfo stand={stand} />
+        <StandInfo
+          stand={stand}
+          standFavorite={standFavorite}
+          setStandFavorite={setStandFavorite}
+        />
       </div>
     </>
   );

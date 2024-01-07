@@ -50,8 +50,18 @@
   border: 1px solid #d6d6d6;
 }
 
-.standInfo h2 {
+.heart {
+  display: flex;
   margin-bottom: 20px;
+}
+
+.heart img {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.standName {
+  padding: 10px 0;
 }
 
 .standInfo p:not(:last-of-type) {
@@ -126,6 +136,11 @@
     flex-direction: column-reverse;
   }
 
+  .standName {
+    font-size: medium;
+    padding: 0;
+  }
+
   .standInfo {
     margin-bottom: 16px;
   }
@@ -135,7 +150,14 @@
     margin-bottom: 10px;
   }
 
-  .standInfo h2 {
-    text-align: center;
+  .heart {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .heart img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
   }
 }

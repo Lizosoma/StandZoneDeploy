@@ -3,8 +3,8 @@ import logo from './Standzone.svg';
 import search from './loupe.svg';
 import styles from './header.module.css';
 import PinkButton from './ui/pinkButton/PinkButton';
-import favorites from '../components/pages/main/standCard/liked.svg';
 import { Link } from 'react-router-dom';
+import FavoritesIcon from './pages/favorites/FavoritesIcon';
 
 const Header = ({ isLoggedIn, user, onSignOut }) => {
   return (
@@ -19,7 +19,7 @@ const Header = ({ isLoggedIn, user, onSignOut }) => {
         {isLoggedIn ? (
           <>
             <Link to={'/favorites'}>
-              <img className={styles.favorites} src={favorites} alt="favorites" />
+              <FavoritesIcon />
             </Link>
             <p className={styles.username}>{user?.username}</p>
             <Link to={'/'}>

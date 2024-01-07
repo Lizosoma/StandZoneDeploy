@@ -51,6 +51,10 @@ button {
   margin-bottom: 20px;
 }
 
+.noMessage {
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   body {
     font-size: small;
