@@ -10,6 +10,7 @@ const Main = () => {
   const [itemsPerPage] = useState(24);
   const [totalItems, setTotalItems] = useState(0);
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites') || '[]'));
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -28,9 +29,14 @@ const Main = () => {
 
   useEffect(() => {
     const fetchData = async (page) => {
-      const data = await StandsService.getByPage(page, itemsPerPage);
-      setStands(data.stands);
-      setTotalItems(data.totalItems);
+      try {
+        const data = await StandsService.getByPage(page, itemsPerPage);
+        setStands(data.stands);
+        setTotalItems(data.totalItems);
+        setError(null);
+      } catch (err) {
+        setError('Something wrong with the server. Please try again later.');
+      }
     };
 
     fetchData(currentPage);
@@ -44,6 +50,7 @@ const Main = () => {
 
   return (
     <>
+      {error && <div>{error}</div>}
       <div className={styles.cards}>
         {stands.map((stand) => (
           <StandCard
@@ -54,11 +61,13 @@ const Main = () => {
           />
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      {!error && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </>
   );
 };
