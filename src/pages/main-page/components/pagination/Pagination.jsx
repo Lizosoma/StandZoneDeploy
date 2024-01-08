@@ -1,47 +1,29 @@
 import React from 'react';
 import styles from './pagination.module.css';
 import arrow from '../../../../assets/images/arrow.svg';
+import PaginationButton from '../../../../ui/pagination-button/PaginatoinButton';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const handlePrevious = () => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
-
   return (
     <ul className={styles.paginationList}>
-      <li className={styles.prevArr}>
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
-          <img src={arrow} alt="Previous" />
-        </button>
-      </li>
-      {pageNumbers.map((number) => (
-        <li key={number} className={styles.pageItem}>
-          <button
-            onClick={() => onPageChange(number)}
-            className={currentPage === number ? styles.active : ''}
-          >
-            {number}
-          </button>
-        </li>
+      <PaginationButton onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+        <img style={{ transform: 'rotate(-90deg)' }} src={arrow} alt="Previous" />
+      </PaginationButton>
+      {[...Array(totalPages).keys()].map((number) => (
+        <PaginationButton
+          key={number + 1}
+          onClick={() => onPageChange(number + 1)}
+          disabled={currentPage === number + 1}
+        >
+          <span className={currentPage === number + 1 ? styles.active : ''}>{number + 1}</span>
+        </PaginationButton>
       ))}
-      <li className={styles.nextArr}>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
-          <img src={arrow} alt="Next" />
-        </button>
-      </li>
+      <PaginationButton
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage >= totalPages}
+      >
+        <img style={{ transform: 'rotate(90deg)' }} src={arrow} alt="Next" />
+      </PaginationButton>
     </ul>
   );
 };

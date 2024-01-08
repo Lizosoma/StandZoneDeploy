@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../../components/stand-card/standCard.module.css';
 import StandCard from '../../components/stand-card/StandCard';
+import Back from '../../components/Back';
 
 const Favorites = () => {
   const [favoriteStands, setFavoriteStands] = useState([]);
@@ -25,6 +26,7 @@ const Favorites = () => {
 
   return (
     <>
+      <Back />
       {favoriteStands.length ? (
         <div className={styles.cards}>
           {favoriteStands.map((stand) => (

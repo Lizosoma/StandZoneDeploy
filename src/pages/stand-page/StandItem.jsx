@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { StandsService } from '../../services/card.service';
 import styles from './standItem.module.css';
-import Back from './components/Back';
+import Back from '../../components/Back';
 import StandInfo from './components/StandInfo';
 import StandPictures from './components/StandPictures';
 import UserPictures from './components/UserPictures';
