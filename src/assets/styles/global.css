@@ -55,6 +55,12 @@ button {
   margin-bottom: 20px;
 }
 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .noMessage {
   text-align: center;
 }
