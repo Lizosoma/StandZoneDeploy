@@ -1,8 +1,14 @@
 .filters {
   display: grid;
-  grid-template-columns: repeat(5, 1fr) repeat(2, 35px);
+  grid-template-columns: repeat(5, 1fr) repeat(1, 0.45fr);
   gap: 16px;
   margin-bottom: 20px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .reset,
@@ -39,6 +45,11 @@
 
 @media screen and (max-width: 768px) {
   .filters {
+    grid-template-columns: repeat(5, 1fr) repeat(1, 0.7fr);
+    gap: 10px;
+  }
+
+  .buttons {
     gap: 10px;
   }
 }

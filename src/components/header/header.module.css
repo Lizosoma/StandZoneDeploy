@@ -20,6 +20,37 @@
 .search,
 .favorites {
   margin-right: 30px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.search:hover {
+  scale: 1.2;
+}
+
+.dropdown {
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  width: 150px;
+  background: white;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 10;
+  display: none;
+}
+
+.username:hover .dropdown {
+  display: block;
+}
+
+.dropdownLink {
+  transition: all 0.3s ease;
+}
+
+.dropdownLink:hover {
+  color: #cd1963;
 }
 
 @media (max-width: 768px) {

@@ -7,6 +7,11 @@
   flex-shrink: 0;
   margin-right: 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.favoritesIcon:hover {
+  scale: 1.1;
 }
 
 .favorites {

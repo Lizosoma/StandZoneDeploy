@@ -69,12 +69,14 @@ const Filters = ({ data, setFilteredItems, filteredItems }) => {
           filterParam={filterParams.battlecry}
           setFilterParam={(value) => updateFilter('battlecry', value)}
         />
-        <FilterResult
-          onApplyFilters={handleApplyFilters}
-          filterParams={filterParams}
-          filteredItemsCount={filteredItemsCount}
-        />
-        <FilterReset setFilterParams={setFilterParams} onApplyFilters={handleApplyFilters} />
+        <div className={styles.buttons}>
+          <FilterResult
+            onApplyFilters={handleApplyFilters}
+            filterParams={filterParams}
+            filteredItemsCount={filteredItemsCount}
+          />
+          <FilterReset setFilterParams={setFilterParams} onApplyFilters={handleApplyFilters} />
+        </div>
       </div>
       {filteredItems.length === 0 && (
         <div className="noMessage">No stands found for the selected filters</div>

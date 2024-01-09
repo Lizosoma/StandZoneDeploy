@@ -38,6 +38,7 @@ select {
 .option {
   background-color: #ffcbcb;
   border: 1px solid #cd1963;
+  color: #cd1963;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../assets/images/Standzone.svg';
 import search from '../../assets/images/search.svg';
 import styles from './header.module.css';
 import PinkButton from '../../ui/pink-button/PinkButton';
 import { Link } from 'react-router-dom';
-import FavoritesIcon from './favorites-icon/FavoritesIcon';
+import FavoritesIcon from './components/favorites-icon/FavoritesIcon';
+import Dropdown from './components/dropdown/Dropdown';
 
 const Header = ({ isLoggedIn, user, onSignOut }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleMouseEnter = () => setShowDropdown(true);
+  const handleMouseLeave = () => setShowDropdown(false);
+
   return (
     <div className={styles.header}>
       <Link to={'/'} className={styles.logo}>
@@ -21,7 +27,16 @@ const Header = ({ isLoggedIn, user, onSignOut }) => {
             <Link to={'/favorites'}>
               <FavoritesIcon />
             </Link>
-            <p className={styles.username}>{user?.username}</p>
+            {isLoggedIn && (
+              <div
+                className={styles.username}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                {user?.username}
+                {showDropdown && <Dropdown />}
+              </div>
+            )}
             <Link to={'/'}>
               <PinkButton text={'Sign out'} onClick={onSignOut} />
             </Link>

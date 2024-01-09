@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './favoritesIcon.module.css';
-import favorites from '../../../assets/images/liked.svg';
+import favorites from '../../../../assets/images/liked.svg';
 
 const FavoritesIcon = () => {
   const [count, setCount] = useState();
