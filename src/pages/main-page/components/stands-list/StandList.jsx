@@ -13,7 +13,7 @@ const StandsList = ({ defaultLimit = 24 }) => {
   const currentPage = parseInt(searchParams.get('_page'), 10) || 1;
   const limit = parseInt(searchParams.get('_limit'), 10) || defaultLimit;
 
-  const favorites = JSON.parse(localStorage.getItem('store')) || [];
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +50,7 @@ const StandsList = ({ defaultLimit = 24 }) => {
               <StandCard
                 key={stand.id}
                 stand={stand}
-                isFavorite={Object.keys(favorites).includes(stand.id.toString())}
+                isFavorite={Object.keys(favorites).includes(stand.id)}
               />
             ))}
           </div>

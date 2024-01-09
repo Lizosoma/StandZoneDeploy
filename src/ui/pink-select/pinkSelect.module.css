@@ -15,6 +15,12 @@ select {
   background-position: 90% center;
 }
 
+.chosenSelect {
+  background: #cd1963;
+  border: 1px solid #cd1963;
+  color: #ffffff;
+}
+
 .select:hover {
   border: 1px solid #cd1963;
   color: #cd1963;
@@ -22,7 +28,7 @@ select {
   background-position: 90% center;
 }
 
-.select:focus {
+.select:active {
   border: 1px solid #cd1963;
   color: #cd1963;
   background: url(../../assets/images/pinkSelectArrow.svg) no-repeat;

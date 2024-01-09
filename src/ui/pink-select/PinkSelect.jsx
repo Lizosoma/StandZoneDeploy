@@ -2,8 +2,11 @@ import React from 'react';
 import styles from './pinkSelect.module.css';
 
 const PinkSelect = ({ text, options, onChange, value }) => {
+  const isChanged = value !== 'all';
+  const selectClasses = `${styles.select} ${isChanged ? styles.chosenSelect : ''}`;
+
   return (
-    <select className={styles.select} onChange={onChange} value={value}>
+    <select className={selectClasses} onChange={onChange} value={value}>
       <option className={styles.option} value="all">
         {text}
       </option>

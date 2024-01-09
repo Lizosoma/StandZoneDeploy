@@ -1,20 +1,13 @@
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .card {
-  margin-bottom: 28px;
-  width: 18vmax;
-  height: 20vmax;
+  height: 20vw;
   position: relative;
   cursor: pointer;
   border: 1px solid #d6d6d6;
+  margin-bottom: 24px;
 }
 
 .like {
-  width: 20%;
+  width: 16%;
   cursor: pointer;
   position: absolute;
 }
@@ -26,8 +19,14 @@
   background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 480px) {
-  .cards {
-    justify-content: space-evenly;
+@media (max-width: 768px) {
+  .card {
+    height: 26vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 44vw;
   }
 }

@@ -56,9 +56,9 @@ button {
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 30px;
 }
 
 .noMessage {
@@ -73,10 +73,20 @@ button {
   .container {
     padding: 0 10px;
   }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   body {
     font-size: xx-small;
+  }
+
+  .cards {
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

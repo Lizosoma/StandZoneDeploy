@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import styles from '../../components/stand-card/standCard.module.css';
 import StandCard from '../../components/stand-card/StandCard';
 import Back from '../../components/Back';
 
@@ -27,7 +26,7 @@ const Favorites = () => {
     <>
       <Back />
       {favoriteStands.length ? (
-        <div className={styles.cards}>
+        <div className="cards">
           {favoriteStands.map((stand) => (
             <StandCard key={stand.id} stand={stand} isFavorite={true} />
           ))}
