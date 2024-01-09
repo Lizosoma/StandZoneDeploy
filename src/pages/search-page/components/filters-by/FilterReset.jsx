@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../filters/filters.module.css';
 
-const FilterReset = ({ setFilterParams }) => {
+const FilterReset = ({ setFilterParams, onApplyFilters }) => {
   const handleReset = () => {
     setFilterParams({
       chapter: 'all',
@@ -10,6 +10,9 @@ const FilterReset = ({ setFilterParams }) => {
       tentativeType: 'all',
       battlecry: 'all',
     });
+    onApplyFilters();
+    // Костыль КАК ПЕРЕДЕЛАТЬ?!?!?!
+    window.location.reload();
   };
 
   return (

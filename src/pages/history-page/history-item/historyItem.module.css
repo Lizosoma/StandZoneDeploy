@@ -1,0 +1,57 @@
+.historyItem {
+  background-color: #efefef;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #8d8d8d;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.historyItems {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.item {
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 12px;
+  text-align: center;
+  align-self: center;
+  transition: all 0.3s ease;
+}
+
+.historyItem:hover {
+  background-color: #ffcbcb;
+}
+
+.historyItem:hover .title {
+  color: #000;
+}
+
+.historyItem:hover .item {
+  border: 1px solid #cd1963;
+  color: #fff;
+  background-color: #cd1963;
+}
+
+@media screen and (max-width: 768px) {
+  .historyItems {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .historyItems {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}

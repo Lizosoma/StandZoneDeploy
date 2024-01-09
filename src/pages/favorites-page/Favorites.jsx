@@ -8,7 +8,6 @@ const Favorites = () => {
   const [favoriteStands, setFavoriteStands] = useState([]);
 
   const storeData = useSelector((state) => state.favoriteReducer);
-
   useEffect(() => {
     const arr = Object.entries(storeData);
 

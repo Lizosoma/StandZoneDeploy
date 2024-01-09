@@ -7,6 +7,7 @@ import Main from '../../pages/main-page/Main';
 import Favorites from '../../pages/favorites-page/Favorites';
 import StandItem from '../../pages/stand-page/StandItem';
 import Search from '../../pages/search-page/Search';
+import History from '../../pages/history-page/History';
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,6 +43,7 @@ const Router = () => {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/stands/:id" element={<StandItem />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/history" element={<History />} />
         <Route path="*" element={<div>Not found</div>} />
       </Routes>
     </BrowserRouter>

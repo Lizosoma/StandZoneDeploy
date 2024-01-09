@@ -6,18 +6,25 @@
 
 .filters {
   display: grid;
-  grid-template-columns: repeat(5, 1fr) repeat(1, 35px);
+  grid-template-columns: repeat(5, 1fr) repeat(2, 35px);
   gap: 16px;
   margin-bottom: 20px;
 }
 
-.reset {
+.reset,
+.search {
   border: 1px solid #000;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.search {
+  background-image: url(../../../../assets/images/search.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .reset:hover {
@@ -30,12 +37,22 @@
   color: #cd1963;
 }
 
+.search:hover {
+  border: 1px solid #cd1963;
+  background-image: url(../../../../assets/images/pinkSearch.svg);
+}
+
+@media screen and (max-width: 768px) {
+  .filters {
+    gap: 10px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .cards {
     justify-content: space-around;
   }
   .filters {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
   }
 }

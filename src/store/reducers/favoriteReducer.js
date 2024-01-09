@@ -1,7 +1,9 @@
 import { SET_STAND_TO_FAVORITE, REMOVE_STAND_FROM_FAVORITE } from '../constants/actionTypes';
 import { omit } from 'lodash';
 
-const initialState = localStorage.getItem('store') ? JSON.parse(localStorage.getItem('store')) : [];
+const initialState = localStorage.getItem('favorites')
+  ? JSON.parse(localStorage.getItem('favorites'))
+  : [];
 
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
