@@ -10,8 +10,9 @@ import Dropdown from './components/dropdown/Dropdown';
 const Header = ({ isLoggedIn, user, onSignOut }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleMouseEnter = () => setShowDropdown(true);
-  const handleMouseLeave = () => setShowDropdown(false);
+  const handleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   return (
     <div className={styles.header}>
@@ -28,11 +29,7 @@ const Header = ({ isLoggedIn, user, onSignOut }) => {
               <FavoritesIcon />
             </Link>
             {isLoggedIn && (
-              <div
-                className={styles.username}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
+              <div className={styles.username} onClick={handleDropdown}>
                 {user?.username}
                 {showDropdown && <Dropdown />}
               </div>

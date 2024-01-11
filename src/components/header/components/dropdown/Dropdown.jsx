@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../../header.module.css';
+import styles from './dropdown.module.css';
 // import { useTheme } from '../../../../hooks/useTheme';
 
 const Dropdown = () => {
@@ -16,6 +16,7 @@ const Dropdown = () => {
 
   return (
     <div className={styles.dropdown}>
+      <button className={styles.dropdownClose}>&#10005;</button>
       <Link to={'/history'} className={styles.dropdownLink}>
         History
       </Link>

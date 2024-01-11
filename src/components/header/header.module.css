@@ -21,36 +21,12 @@
 .favorites {
   margin-right: 30px;
   position: relative;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .search:hover {
   scale: 1.2;
-}
-
-.dropdown {
-  position: absolute;
-  text-align: center;
-  top: 100%;
-  width: 150px;
-  background: var(--white-color);
-  border: 1px solid var(--black-color);
-  border-radius: 4px;
-  padding: 10px;
-  z-index: 10;
-  display: none;
-}
-
-.username:hover .dropdown {
-  display: block;
-}
-
-.dropdownLink {
-  transition: all 0.3s ease;
-}
-
-.dropdownLink:hover {
-  color: var(--pink-color);
 }
 
 @media (max-width: 768px) {
