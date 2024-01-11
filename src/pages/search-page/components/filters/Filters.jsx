@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './filters.module.css';
-import FilterByChapter from '../filters-by/FilterByChapter';
-import FilterByAbility from '../filters-by/FilterByAbility';
-import FilterByForm from '../filters-by/FilterByForm';
-import FilterByTentative from '../filters-by/FilterByTentative';
-import FilterByBattlecry from '../filters-by/FilterByBattlecry';
 import FilterReset from '../filters-by/FilterReset';
 import FilterResult from '../filters-by/FilterResult';
+import { useSearchParams } from 'react-router-dom';
+import FilterBy from '../filters-by/FilterBy';
 
 const Filters = ({ data, setFilteredItems, filteredItems }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [filteredItemsCount, setFilteredItemsCount] = useState(0);
   const [filterParams, setFilterParams] = useState({
     chapter: 'all',
@@ -25,19 +23,26 @@ const Filters = ({ data, setFilteredItems, filteredItems }) => {
     }));
   };
 
+  const shouldFilter = (value, filter) => filter === 'all' || value.includes(filter);
+
   const applyFilters = () => {
-    const newFilteredItems = data.filter((item) => {
+    const newFilteredItems = data?.filter((item) => {
       const battlecryCondition =
-        filterParams.battlecry === 'Exists' ? item.battlecry !== 'none' : item.battlecry === 'none';
+        filterParams.battlecry === 'Exists'
+          ? item.battlecry !== 'none'
+          : filterParams.battlecry === 'None'
+            ? item.battlecry === 'none'
+            : true;
 
       return (
-        (filterParams.chapter === 'all' || item.chapter.includes(filterParams.chapter)) &&
-        (filterParams.abilityType === 'all' || item.type.includes(filterParams.abilityType)) &&
-        (filterParams.formType === 'all' || item.type.includes(filterParams.formType)) &&
-        (filterParams.tentativeType === 'all' || item.type.includes(filterParams.tentativeType)) &&
-        (filterParams.battlecry === 'all' || battlecryCondition)
+        shouldFilter(item.chapter, filterParams.chapter) &&
+        shouldFilter(item.type, filterParams.abilityType) &&
+        shouldFilter(item.type, filterParams.formType) &&
+        shouldFilter(item.type, filterParams.tentativeType) &&
+        battlecryCondition
       );
     });
+
     setFilteredItems(newFilteredItems);
     setFilteredItemsCount(newFilteredItems.length);
   };
@@ -46,34 +51,36 @@ const Filters = ({ data, setFilteredItems, filteredItems }) => {
     applyFilters();
   };
 
+  useEffect(() => {
+    setSearchParams({
+      chapter: filterParams.chapter,
+      abilityType: filterParams.abilityType,
+      formType: filterParams.formType,
+      tentativeType: filterParams.tentativeType,
+      battlecry: filterParams.battlecry,
+    });
+  }, [filterParams, setSearchParams]);
+
+  const handleSetSearchParams = (params) => {
+    Object.entries(filterParams).forEach(([key, value]) => {
+      if (value !== 'all') {
+        params[key] = value;
+      }
+    });
+
+    setSearchParams(searchParams);
+  };
+
   return (
     <>
       <div className={styles.filters}>
-        <FilterByChapter
-          filterParam={filterParams.chapter}
-          setFilterParam={(value) => updateFilter('chapter', value)}
-        />
-        <FilterByAbility
-          filterParam={filterParams.abilityType}
-          setFilterParam={(value) => updateFilter('abilityType', value)}
-        />
-        <FilterByForm
-          filterParam={filterParams.formType}
-          setFilterParam={(value) => updateFilter('formType', value)}
-        />
-        <FilterByTentative
-          filterParam={filterParams.tentativeType}
-          setFilterParam={(value) => updateFilter('tentativeType', value)}
-        />
-        <FilterByBattlecry
-          filterParam={filterParams.battlecry}
-          setFilterParam={(value) => updateFilter('battlecry', value)}
-        />
+        <FilterBy filterParams={filterParams} setFilterParam={updateFilter} />
         <div className={styles.buttons}>
           <FilterResult
             onApplyFilters={handleApplyFilters}
             filterParams={filterParams}
             filteredItemsCount={filteredItemsCount}
+            setSearchParams={handleSetSearchParams}
           />
           <FilterReset setFilterParams={setFilterParams} onApplyFilters={handleApplyFilters} />
         </div>
