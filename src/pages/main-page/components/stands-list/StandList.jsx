@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import StandCard from '../../../../components/stand-card/StandCard';
 import { StandsService } from '../../../../services/card.service';
 import Pagination from '../pagination/Pagination';
+import useIsFavorite from '../../../../hooks/useIsFavorite';
 
 const StandsList = ({ defaultLimit = 24 }) => {
   const [stands, setStands] = useState([]);
@@ -13,7 +14,7 @@ const StandsList = ({ defaultLimit = 24 }) => {
   const currentPage = parseInt(searchParams.get('_page'), 10) || 1;
   const limit = parseInt(searchParams.get('_limit'), 10) || defaultLimit;
 
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  const favorites = useIsFavorite();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,11 +48,7 @@ const StandsList = ({ defaultLimit = 24 }) => {
         <>
           <div className="cards">
             {stands.map((stand) => (
-              <StandCard
-                key={stand.id}
-                stand={stand}
-                isFavorite={Object.keys(favorites).includes(stand.id)}
-              />
+              <StandCard key={stand.id} stand={stand} isFavorite={favorites.isFavorite(stand)} />
             ))}
           </div>
           <Pagination

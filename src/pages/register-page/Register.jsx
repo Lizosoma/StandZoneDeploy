@@ -29,7 +29,7 @@ const Register = () => {
         {...register('email', {
           required: 'Email is required',
           pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,3}$/i,
             message: 'Email is not valid',
           },
         })}
@@ -53,8 +53,7 @@ const Register = () => {
         {...register('password', {
           required: 'Password is required',
           pattern: {
-            value:
-              /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
+            value: /^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/,
             message:
               'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character and be at least 8 characters long',
           },

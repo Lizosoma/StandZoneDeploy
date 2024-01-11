@@ -3,13 +3,14 @@ import Filters from './components/filters/Filters';
 import SearchInput from './components/search-field/SearchInput';
 import { StandsService } from '../../services/card.service';
 import StandCard from '../../components/stand-card/StandCard';
+import useIsFavorite from '../../hooks/useIsFavorite';
 
 const Search = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
-  const favorites = JSON.parse(localStorage.getItem('store')) || [];
+  const favorites = useIsFavorite();
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -40,11 +41,7 @@ const Search = () => {
 
       <div className="cards">
         {filteredItems.map((stand) => (
-          <StandCard
-            key={stand.id}
-            stand={stand}
-            isFavorite={Object.keys(favorites).includes(stand.id.toString())}
-          />
+          <StandCard key={stand.id} stand={stand} isFavorite={favorites.isFavorite(stand)} />
         ))}
       </div>
     </>
