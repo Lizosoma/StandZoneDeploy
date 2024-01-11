@@ -55,7 +55,7 @@
   --red-color-dark: red; */
 }
 
-[data-theme='light'] {
+body {
   --white-color: var(--white-color-light);
   --pink-color: var(--pink-color-light);
   --light-pink-color: var(--light-pink-color-light);
