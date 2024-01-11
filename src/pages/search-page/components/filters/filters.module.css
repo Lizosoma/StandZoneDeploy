@@ -13,7 +13,7 @@
 
 .reset,
 .search {
-  border: 1px solid #000;
+  border: 1px solid var(--black-color);
   border-radius: 4px;
   cursor: pointer;
   display: flex;
@@ -29,17 +29,17 @@
 }
 
 .reset:hover {
-  border: 1px solid #cd1963;
-  color: #cd1963;
+  border: 1px solid var(--pink-color);
+  color: var(--pink-color);
 }
 
 .reset:active {
-  border: 1px solid #cd1963;
-  color: #cd1963;
+  border: 1px solid var(--pink-color);
+  color: var(--pink-color);
 }
 
 .search:hover {
-  border: 1px solid #cd1963;
+  border: 1px solid var(--pink-color);
   background-image: url(../../../../assets/images/pinkSearch.svg);
 }
 

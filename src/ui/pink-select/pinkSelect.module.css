@@ -5,7 +5,7 @@ select {
 }
 
 .select {
-  border: 1px solid #000;
+  border: 1px solid var(--black-color);
   padding: 10px;
   text-align: center;
   border-radius: 4px;
@@ -16,29 +16,29 @@ select {
 }
 
 .chosenSelect {
-  background: #cd1963;
-  border: 1px solid #cd1963;
-  color: #ffffff;
+  background: var(--pink-color);
+  border: 1px solid var(--pink-color);
+  color: var(--white-color);
 }
 
 .select:hover {
-  border: 1px solid #cd1963;
-  color: #cd1963;
+  border: 1px solid var(--pink-color);
+  color: var(--pink-color);
   background: url(../../assets/images/pinkSelectArrow.svg) no-repeat;
   background-position: 90% center;
 }
 
 .select:active {
-  border: 1px solid #cd1963;
-  color: #cd1963;
+  border: 1px solid var(--pink-color);
+  color: var(--pink-color);
   background: url(../../assets/images/pinkSelectArrow.svg) no-repeat;
   background-position: 90% center;
 }
 
 .option {
-  background-color: #ffcbcb;
-  border: 1px solid #cd1963;
-  color: #cd1963;
+  background-color: var(--light-pink-color);
+  border: 1px solid var(--pink-color);
+  color: var(--pink-color);
 }
 
 @media screen and (max-width: 768px) {

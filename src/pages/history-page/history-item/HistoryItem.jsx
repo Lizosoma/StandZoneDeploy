@@ -6,7 +6,7 @@ const HistoryItem = ({ item }) => {
   return (
     <div className={styles.historyItem}>
       <p className={styles.title}>Found {count} stands</p>
-      <div className={styles.historyItems}>
+      <div className={styles.historyFilters}>
         {Object.entries(params).map(([key, value]) => {
           if (value !== '' && value !== 'all') {
             return (

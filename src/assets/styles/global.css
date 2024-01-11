@@ -31,6 +31,52 @@
   font-display: swap;
 }
 
+:root {
+  /* light theme */
+
+  --white-color-light: #ffffff;
+  --pink-color-light: #cd1963;
+  --light-pink-color-light: #ffcbcb;
+  --black-color-light: #000000;
+  --grey-color-light: #d6d6d6;
+  --light-grey-color-light: #efefef;
+  --dark-grey-color-light: #8d8d8d;
+  --red-color-light: red;
+
+  /* dark theme
+
+  --white-color-dark: #000000;
+  --pink-color-dark: #ffcbcb;
+  --light-pink-color-dark: #cd1963;
+  --black-color-dark: #ffffff;
+  --grey-color-dark: #d6d6d6;
+  --light-grey-color-dark: #efefef;
+  --dark-grey-color-dark: #8d8d8d;
+  --red-color-dark: red; */
+}
+
+[data-theme='light'] {
+  --white-color: var(--white-color-light);
+  --pink-color: var(--pink-color-light);
+  --light-pink-color: var(--light-pink-color-light);
+  --black-color: var(--black-color-light);
+  --grey-color: var(--grey-color-light);
+  --light-grey-color: var(--light-grey-color-light);
+  --dark-grey-color: var(--dark-grey-color-light);
+  --red-color: var(--red-color-light);
+}
+
+/* [data-theme='dark'] {
+  --white-color: var(--white-color-dark);
+  --pink-color: var(--pink-color-dark);
+  --light-pink-color: var(--light-pink-color-dark);
+  --black-color: var(--black-color-dark);
+  --grey-color: var(--grey-color-dark);
+  --light-grey-color: var(--light-grey-color-dark);
+  --dark-grey-color: var(--dark-grey-color-dark);
+  --red-color: var(--red-color-dark);
+} */
+
 input:focus {
   outline: none;
 }
@@ -40,8 +86,9 @@ select:focus {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: var(--white-color);
   font-size: 1rem;
+  color: var(--black-color);
 }
 
 button {
