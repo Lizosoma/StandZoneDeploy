@@ -6,8 +6,15 @@ import PinkButton from '../../ui/pink-button/PinkButton';
 import { Link } from 'react-router-dom';
 import FavoritesIcon from './components/favorites-icon/FavoritesIcon';
 import Dropdown from './components/dropdown/Dropdown';
+import { UserType } from '../../types/user.interface';
 
-const Header = ({ isLoggedIn, user, onSignOut }) => {
+interface HeaderProps {
+  isLoggedIn: boolean;
+  user: UserType | null;
+  onSignOut: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isLoggedIn, user, onSignOut }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleDropdown = () => {
@@ -40,7 +47,7 @@ const Header = ({ isLoggedIn, user, onSignOut }) => {
           </>
         ) : (
           <Link to={'/signin'}>
-            <PinkButton text={'Sign in'} />
+            <PinkButton text={'Sign in'} onClick={() => {}} />
           </Link>
         )}
       </div>

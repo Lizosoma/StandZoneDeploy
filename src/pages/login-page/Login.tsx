@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
-import PinkButton from '../../ui/pink-button/PinkButton.jsx';
+import PinkButton from '../../ui/pink-button/PinkButton';
 import styles from '../../ui/form/form.module.css';
 
-const Login = ({ onSignIn }) => {
+interface LoginProps {
+  onSignIn: (user: any) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onSignIn }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
@@ -14,8 +18,8 @@ const Login = ({ onSignIn }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const users = JSON.parse(localStorage.getItem('users') as string) || [];
 
     for (const user of users) {
       if (!user || data.email !== user.email) {
@@ -44,7 +48,7 @@ const Login = ({ onSignIn }) => {
           },
         })}
       />
-      {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+      {errors.email && <p className={styles.error}>{errors.email.message as string}</p>}
 
       <label htmlFor="password">Password</label>
       <input
@@ -52,11 +56,11 @@ const Login = ({ onSignIn }) => {
           required: 'Password is required',
         })}
       />
-      {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+      {errors.password && <p className={styles.error}>{errors.password.message as string}</p>}
 
       {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
-      <PinkButton text="Sign in" />
+      <PinkButton text="Sign in" onClick={handleSubmit(onSubmit)} />
 
       <p>
         No account yet?{' '}

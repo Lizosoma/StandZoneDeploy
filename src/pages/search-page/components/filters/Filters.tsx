@@ -4,8 +4,15 @@ import FilterReset from '../filters-by/FilterReset';
 import FilterResult from '../filters-by/FilterResult';
 import { useSearchParams } from 'react-router-dom';
 import FilterBy from '../filters-by/FilterBy';
+import { IItem } from '../../../../types/item.interface';
 
-const Filters = ({ data, setFilteredItems, filteredItems }) => {
+interface FiltersProps {
+  data: IItem[];
+  setFilteredItems: (filteredItems: IItem[]) => void;
+  filteredItems: IItem[];
+}
+
+const Filters: React.FC<FiltersProps> = ({ data, setFilteredItems, filteredItems }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredItemsCount, setFilteredItemsCount] = useState(0);
   const [filterParams, setFilterParams] = useState({
@@ -16,14 +23,15 @@ const Filters = ({ data, setFilteredItems, filteredItems }) => {
     battlecry: 'all',
   });
 
-  const updateFilter = (filterName, value) => {
+  const updateFilter = (filterName: string, value: string) => {
     setFilterParams((prevParams) => ({
       ...prevParams,
       [filterName]: value,
     }));
   };
 
-  const shouldFilter = (value, filter) => filter === 'all' || value.includes(filter);
+  const shouldFilter = (value: string, filter: string) =>
+    filter === 'all' || value.includes(filter);
 
   const applyFilters = () => {
     const newFilteredItems = data?.filter((item) => {
@@ -36,9 +44,9 @@ const Filters = ({ data, setFilteredItems, filteredItems }) => {
 
       return (
         shouldFilter(item.chapter, filterParams.chapter) &&
-        shouldFilter(item.type, filterParams.abilityType) &&
-        shouldFilter(item.type, filterParams.formType) &&
-        shouldFilter(item.type, filterParams.tentativeType) &&
+        shouldFilter(item.abilityType, filterParams.abilityType) &&
+        shouldFilter(item.formType, filterParams.formType) &&
+        shouldFilter(item.tentativeType, filterParams.tentativeType) &&
         battlecryCondition
       );
     });
@@ -61,7 +69,7 @@ const Filters = ({ data, setFilteredItems, filteredItems }) => {
     });
   }, [filterParams, setSearchParams]);
 
-  const handleSetSearchParams = (params) => {
+  const handleSetSearchParams = (params: Record<string, string>) => {
     Object.entries(filterParams).forEach(([key, value]) => {
       if (value !== 'all') {
         params[key] = value;

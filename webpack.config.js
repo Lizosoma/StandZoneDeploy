@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, './src/index.js'),
+    main: path.resolve(__dirname, './src/index.tsx'),
   },
   output: {
     publicPath: '/',
@@ -47,10 +47,18 @@ module.exports = {
           filename: 'assets/images/[name][hash][ext][query]',
         },
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    alias: {
+      src: path.resolve(__dirname, './src'),
+    },
+    extensions: ['.js', '.jsx', '.json', '.tsx', '.ts'],
   },
   plugins: [
     new HtmlWebpackPlugin({

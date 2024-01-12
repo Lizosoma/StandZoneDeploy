@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../ui/form/form.module.css';
 import PinkButton from '../../ui/pink-button/PinkButton';
@@ -14,8 +14,8 @@ const Register = () => {
   } = useForm({ mode: 'onChange' });
   const password = watch('password');
 
-  const onSubmit = (data) => {
-    const registeredUsers = JSON.parse(localStorage.getItem('users')) || [];
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const registeredUsers = JSON.parse(localStorage.getItem('users') as string) || [];
     registeredUsers.push(data);
     localStorage.setItem('users', JSON.stringify(registeredUsers));
     navigate('/signin');
@@ -34,7 +34,7 @@ const Register = () => {
           },
         })}
       />
-      {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+      {errors.email && <p className={styles.error}>{errors.email.message as string}</p>}
 
       <label htmlFor="username">Username</label>
       <input
@@ -46,7 +46,7 @@ const Register = () => {
           },
         })}
       />
-      {errors.username && <p className={styles.error}>{errors.username.message}</p>}
+      {errors.username && <p className={styles.error}>{errors.username.message as string}</p>}
 
       <label htmlFor="password">Password</label>
       <input
@@ -59,7 +59,7 @@ const Register = () => {
           },
         })}
       />
-      {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+      {errors.password && <p className={styles.error}>{errors.password.message as string}</p>}
 
       <label htmlFor="repeatpassword">Repeat password</label>
       <input
@@ -67,9 +67,11 @@ const Register = () => {
           validate: (value) => value === password || 'The passwords do not match',
         })}
       />
-      {errors.repeatpassword && <p className={styles.error}>{errors.repeatpassword.message}</p>}
+      {errors.repeatpassword && (
+        <p className={styles.error}>{errors.repeatpassword.message as string}</p>
+      )}
 
-      <PinkButton text="Sign up" />
+      <PinkButton text="Sign up" onClick={handleSubmit(onSubmit)} />
 
       <p>
         Already have an account?{' '}

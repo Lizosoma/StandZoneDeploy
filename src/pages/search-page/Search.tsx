@@ -4,11 +4,13 @@ import SearchInput from './components/search-field/SearchInput';
 import { StandsService } from '../../services/card.service';
 import StandCard from '../../components/stand-card/StandCard';
 import useIsFavorite from '../../hooks/useIsFavorite';
+import { IStand } from '../../types/stand.interface';
+import { IItem } from '../../types/item.interface';
 
 const Search = () => {
-  const [items, setItems] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
+  const [items, setItems] = useState<IStand[]>([]);
+  const [filteredItems, setFilteredItems] = useState<IStand[]>([]);
+  const [searchResults, setSearchResults] = useState<IStand[]>([]);
 
   const favorites = useIsFavorite();
 

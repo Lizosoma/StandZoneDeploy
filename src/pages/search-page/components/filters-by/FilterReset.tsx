@@ -1,7 +1,18 @@
 import React from 'react';
 import styles from '../filters/filters.module.css';
 
-const FilterReset = ({ setFilterParams, onApplyFilters }) => {
+interface FilterResetProps {
+  setFilterParams: (filterParams: {
+    chapter: string;
+    abilityType: string;
+    formType: string;
+    tentativeType: string;
+    battlecry: string;
+  }) => void;
+  onApplyFilters: () => void;
+}
+
+const FilterReset: React.FC<FilterResetProps> = ({ setFilterParams, onApplyFilters }) => {
   const handleReset = () => {
     setFilterParams({
       chapter: 'all',

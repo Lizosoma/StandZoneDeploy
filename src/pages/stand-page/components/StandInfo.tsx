@@ -5,8 +5,15 @@ import styles from '../standItem.module.css';
 import like from '../../../assets/images/like.svg';
 import liked from '../../../assets/images/liked.svg';
 import StandStats from './StandStats';
+import { IStand } from '../../../types/stand.interface';
 
-const StandInfo = ({ stand, standFavorite, setStandFavorite }) => {
+interface StandInfoProps {
+  stand: IStand;
+  standFavorite: boolean;
+  setStandFavorite: (value: boolean) => void;
+}
+
+const StandInfo: React.FC<StandInfoProps> = ({ stand, standFavorite, setStandFavorite }) => {
   const dispatch = useDispatch();
 
   const dispatchFavoriteStand = () => {
@@ -16,7 +23,9 @@ const StandInfo = ({ stand, standFavorite, setStandFavorite }) => {
     } else {
       dispatch(
         setStandToFavorite({
-          [stand.id]: { name: stand.name, stand_images: stand.stand_images },
+          [stand.id]: {
+            ...stand,
+          },
         }),
       );
       setStandFavorite(true);

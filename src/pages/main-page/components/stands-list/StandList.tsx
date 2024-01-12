@@ -4,15 +4,16 @@ import StandCard from '../../../../components/stand-card/StandCard';
 import { StandsService } from '../../../../services/card.service';
 import Pagination from '../pagination/Pagination';
 import useIsFavorite from '../../../../hooks/useIsFavorite';
+import { IStand } from '../../../../types/stand.interface';
 
 const StandsList = ({ defaultLimit = 24 }) => {
   const [stands, setStands] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const currentPage = parseInt(searchParams.get('_page'), 10) || 1;
-  const limit = parseInt(searchParams.get('_limit'), 10) || defaultLimit;
+  const currentPage = parseInt(searchParams.get('_page')!, 10) || 1;
+  const limit = parseInt(searchParams.get('_limit')!, 10) || defaultLimit;
 
   const favorites = useIsFavorite();
 
@@ -34,7 +35,7 @@ const StandsList = ({ defaultLimit = 24 }) => {
     setSearchParams({ _page: currentPage.toString(), _limit: limit.toString() });
   }, [currentPage, limit, setSearchParams]);
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage: number) => {
     setSearchParams({ _page: newPage.toString(), _limit: limit.toString() });
   };
 
@@ -47,7 +48,7 @@ const StandsList = ({ defaultLimit = 24 }) => {
       ) : (
         <>
           <div className="cards">
-            {stands.map((stand) => (
+            {stands.map((stand: IStand) => (
               <StandCard key={stand.id} stand={stand} isFavorite={favorites.isFavorite(stand)} />
             ))}
           </div>

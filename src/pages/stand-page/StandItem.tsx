@@ -7,10 +7,11 @@ import Back from '../../components/Back';
 import StandInfo from './components/StandInfo';
 import StandPictures from './components/StandPictures';
 import UserPictures from './components/UserPictures';
+import { IStand } from '../../types/stand.interface';
 
 const StandItem = () => {
   const { id } = useParams();
-  const [stand, setStand] = useState({});
+  const [stand, setStand] = useState<IStand | null>(null);
 
   const [standFavorite, setStandFavorite] = useState(false);
   const storeData = useSelector((state) => state.favoriteReducer);
@@ -23,7 +24,7 @@ const StandItem = () => {
     storeData[id] ? setStandFavorite(true) : setStandFavorite(false);
 
     const fetchData = async () => {
-      const data = await StandsService.getById(id);
+      const data = await StandsService.getById(Number(id));
       setStand(data);
     };
 

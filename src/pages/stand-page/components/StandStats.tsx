@@ -1,8 +1,13 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createGraph } from '../../../utils/createGraph';
+import { IStand } from '../../../types/stand.interface';
 
-const StandStats = ({ stand }) => {
+interface StandStatsProps {
+  stand: IStand;
+}
+
+const StandStats: React.FC<StandStatsProps> = ({ stand }) => {
   useEffect(() => {
     if (stand?.id && stand?.stats) {
       createGraph(stand.stats);

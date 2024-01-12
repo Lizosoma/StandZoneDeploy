@@ -1,7 +1,16 @@
 import React from 'react';
 import styles from './historyItem.module.css';
 
-const HistoryItem = ({ item }) => {
+interface HistoryItemProps {
+  item: {
+    params: {
+      [key: string]: string;
+    };
+    count: number;
+  };
+}
+
+const HistoryItem: React.FC<HistoryItemProps> = ({ item }) => {
   const { params, count } = item;
   return (
     <div className={styles.historyItem}>

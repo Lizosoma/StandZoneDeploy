@@ -3,8 +3,14 @@ import like from '../../assets/images/like.svg';
 import liked from '../../assets/images/liked.svg';
 import styles from './standCard.module.css';
 import { Link } from 'react-router-dom';
+import { IStand } from '../../types/stand.interface';
 
-const StandCard = ({ stand, isFavorite }) => {
+interface StandCardProps {
+  stand: IStand;
+  isFavorite: boolean;
+}
+
+const StandCard: React.FC<StandCardProps> = ({ stand, isFavorite }) => {
   const log = localStorage.getItem('isLoggedIn') === 'true';
   return (
     <div className={styles.card}>

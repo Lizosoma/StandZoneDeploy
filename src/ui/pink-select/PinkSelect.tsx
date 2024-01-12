@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './pinkSelect.module.css';
 
-const PinkSelect = ({ text, options, onChange, value }) => {
+interface PinkSelectProps {
+  text: string;
+  options: string[];
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  value: string;
+}
+
+const PinkSelect: React.FC<PinkSelectProps> = ({ text, options, onChange, value }) => {
   const isChanged = value !== 'all';
   const selectClasses = `${styles.select} ${isChanged ? styles.chosenSelect : ''}`;
 

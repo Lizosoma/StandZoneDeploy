@@ -4,9 +4,9 @@ import styles from './favoritesIcon.module.css';
 import favorites from '../../../../assets/images/liked.svg';
 
 const FavoritesIcon = () => {
-  const [count, setCount] = useState();
+  const [count, setCount] = useState<number | string>(0);
 
-  const storeData = useSelector((state) => state.favoriteReducer);
+  const storeData = useSelector((state: any) => state.favoriteReducer);
 
   useEffect(() => {
     const count = Object.keys(storeData).length;

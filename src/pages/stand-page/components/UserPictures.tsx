@@ -1,8 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from '../standItem.module.css';
+import { IStand } from '../../../types/stand.interface';
 
-const UserPictures = ({ stand }) => {
+interface UserPicturesProps {
+  stand: IStand;
+}
+
+const UserPictures: React.FC<UserPicturesProps> = ({ stand }) => {
   const [userIndex, setUserIndex] = useState(0);
   const [userDotIndex, setUserDotIndex] = useState(0);
 
@@ -18,7 +23,7 @@ const UserPictures = ({ stand }) => {
     return () => clearInterval(intervalId);
   }, [stand.user_images]);
 
-  const handleUserDotClick = (index) => {
+  const handleUserDotClick = (index: number) => {
     setUserIndex(index);
     setUserDotIndex(index);
   };

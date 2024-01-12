@@ -8,19 +8,20 @@ import Favorites from '../../pages/favorites-page/Favorites';
 import StandItem from '../../pages/stand-page/StandItem';
 import Search from '../../pages/search-page/Search';
 import History from '../../pages/history-page/History';
+import { UserType } from '../../types/user.interface';
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<UserType | null>(null);
 
   useEffect(() => {
     const log = localStorage.getItem('isLoggedIn') === 'true';
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const storedUser = JSON.parse(localStorage.getItem('user') as string);
     setIsLoggedIn(log);
     setUser(storedUser);
   }, []);
 
-  const handleSignIn = (userData) => {
+  const handleSignIn = (userData: UserType) => {
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('user', JSON.stringify(userData));
     setIsLoggedIn(true);

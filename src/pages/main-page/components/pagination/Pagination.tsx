@@ -3,7 +3,13 @@ import styles from './pagination.module.css';
 import arrow from '../../../../assets/images/arrow.svg';
 import PaginationButton from '../../../../ui/pagination-button/PaginatoinButton';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (pageNumber: number) => void;
+}
+
+const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
   return (
     <ul className={styles.paginationList}>
       <PaginationButton onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
