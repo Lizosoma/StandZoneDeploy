@@ -8,7 +8,6 @@ type FilterResultProps = {
   onApplyFilters: () => void;
   filterParams: IItem;
   filteredItemsCount: number;
-  setSearchParams: (params: Record<string, string>) => void;
 };
 
 const FilterResult: React.FC<FilterResultProps> = ({
@@ -22,10 +21,10 @@ const FilterResult: React.FC<FilterResultProps> = ({
   };
 
   useEffect(() => {
-    if (filteredItemsCount !== 0) {
+    if (filteredItemsCount !== 0 && filteredItemsCount !== 154) {
       dispatch(saveFiltersParams(filterParams, filteredItemsCount));
     }
-  }, [filteredItemsCount]);
+  }, [filteredItemsCount, filterParams, dispatch]);
 
   return <button className={styles.search} onClick={handleSearch}></button>;
 };

@@ -14,7 +14,7 @@ const StandItem = () => {
   const [stand, setStand] = useState<IStand | null>(null);
 
   const [standFavorite, setStandFavorite] = useState(false);
-  const storeData = useSelector((state) => state.favoriteReducer);
+  const storeData = useSelector((state: any) => state.favoriteReducer);
 
   useEffect(() => {
     if (!id) {

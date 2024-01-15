@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
+import { IStand } from '../types/stand.interface';
 
 const useIsFavorite = () => {
-  const favorites = useSelector((state) => state.favoriteReducer);
+  const favorites = useSelector((state: any) => state.favoriteReducer);
 
-  const isFavorite = (stand) => {
+  const isFavorite = (stand: IStand) => {
     return Object.keys(favorites).includes(stand.id);
   };
 

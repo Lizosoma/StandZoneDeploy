@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import StandCard from '../../components/stand-card/StandCard';
 import Back from '../../components/Back';
+import { IStand } from '../../types/stand.interface';
 
 const Favorites = () => {
-  const [favoriteStands, setFavoriteStands] = useState([]);
+  const [favoriteStands, setFavoriteStands] = useState<IStand[]>([]);
 
-  const storeData = useSelector((state) => state.favoriteReducer);
+  const storeData = useSelector((state: any) => state.favoriteReducer);
   useEffect(() => {
     const arr = Object.entries(storeData);
 
@@ -14,11 +15,11 @@ const Favorites = () => {
       const res = arr.map((item) => {
         return {
           id: item[0],
-          ...item[1],
+          ...(typeof item[1] === 'object' ? item[1] : {}),
         };
       });
 
-      setFavoriteStands(res);
+      setFavoriteStands(res as any);
     }
   }, []);
 

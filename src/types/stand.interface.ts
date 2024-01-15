@@ -1,3 +1,5 @@
+import { IItem } from './item.interface';
+
 export interface IStand {
   id: string;
   name: string;

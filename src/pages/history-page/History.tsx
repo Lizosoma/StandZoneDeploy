@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import HistoryItem from './history-item/HistoryItem';
 
 const History = () => {
-  const filterHistory = useSelector((state) => state.filterReducer);
+  const filterHistory = useSelector((state: any) => state.filterReducer);
   const reversedHistory = [...filterHistory].reverse();
 
   return (
