@@ -1,11 +1,15 @@
 {
   "name": "reactapp",
+  "homepage": "https://lizosoma.github.io/JoJoStands-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "serve": "json-server --watch ./src/database/db.json --port 4200",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +27,7 @@
     "antd": "^5.12.4",
     "axios": "^1.6.3",
     "clean-webpack-plugin": "^4.0.0",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "json-server": "^0.17.4",
     "lodash": "^4.17.21",

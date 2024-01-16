@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Header from '../header/Header';
 import Register from '../../pages/register-page/Register';
 import Login from '../../pages/login-page/Login';
@@ -35,7 +35,7 @@ const Router = () => {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Header isLoggedIn={isLoggedIn} user={user} onSignOut={handleSignOut} />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -47,7 +47,7 @@ const Router = () => {
         <Route path="/history" element={<History />} />
         <Route path="*" element={<div>Not found</div>} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
