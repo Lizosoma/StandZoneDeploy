@@ -9,7 +9,7 @@
     "start": "webpack serve",
     "serve": "json-server --watch ./src/database/db.json --port 4200",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
